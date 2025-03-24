@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.support.PageableExecutionUtils;
+
 import org.springframework.data.domain.Pageable;
 
 @Component
@@ -35,8 +37,7 @@ public class EntryService {
         entryRepository.deleteById(id);
     }
 
-    public Page<Entry> getEntriesWithPagination(int page, int size) {
-        Pageable pageable = PageRequest.of (page, size);
+    public Page<Entry> getEntriesWithPagination(Pageable pageable) {
         return entryRepository.findAll(pageable);
     }
 }

@@ -69,7 +69,14 @@ public class EntryControllerV2 {
     }
 
     @GetMapping("/paginated")
-    public Page<Entry> getEntriesWithPagination(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
-        return entryService.getEntriesWithPagination(page, size);
+    public Page<Entry> getEntriesWithPagination(
+            @RequestParam(defaultValue = "0") int page,       // Default page = 0
+            @RequestParam(defaultValue = "10") int size) {    // Default size = 10
+        Pageable pageable = PageRequest.of(page, size);  // Use PageRequest to create pageable
+        return entryService.getEntriesWithPagination(pageable);  // Fetch paginated results
     }
+//    @GetMapping("/paginated")
+//    public Page<Entry> getEntriesWithPagination(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+//        return entryService.getEntriesWithPagination(page, size);
+//    }
 }
