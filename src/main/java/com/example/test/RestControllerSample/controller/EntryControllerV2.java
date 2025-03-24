@@ -75,6 +75,7 @@ public class EntryControllerV2 {
         Pageable pageable = PageRequest.of(page, size);  // Use PageRequest to create pageable
         return entryService.getEntriesWithPagination(pageable);  // Fetch paginated results
     }
+    //sample thing
 //    @GetMapping("/paginated")
 //    public Page<Entry> getEntriesWithPagination(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
 //        return entryService.getEntriesWithPagination(page, size);
